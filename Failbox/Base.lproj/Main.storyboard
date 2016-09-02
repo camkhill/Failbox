@@ -40,10 +40,6 @@
                                             <outletCollection property="gestureRecognizers" destination="H0B-ZR-Mxq" appends="YES" id="NUi-ZN-Gvu"/>
                                         </connections>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="search" id="DLA-kq-LV7">
-                                        <rect key="frame" x="0.0" y="101" width="320" height="42"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="nav" id="sdx-D8-5Xv">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -53,19 +49,41 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="feed" id="NRd-42-THM">
-                                        <rect key="frame" x="0.0" y="230" width="320" height="1202"/>
+                                        <rect key="frame" x="0.0" y="225" width="320" height="1202"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" image="reschedule" id="gPk-YV-ZfT">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" image="list" id="2G1-7W-fQ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="search" id="DLA-kq-LV7">
+                                        <rect key="frame" x="0.0" y="101" width="320" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                 </subviews>
                             </scrollView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" image="reschedule" id="gPk-YV-ZfT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" image="list" id="2G1-7W-fQ9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="menu" id="0vq-qg-eBO">
+                                <rect key="frame" x="-320" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EgY-Vv-dDB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onTapList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mqq-pQ-VzH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LpF-2J-VR8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="569"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onTapReschedule:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aIG-JH-zGy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -74,9 +92,12 @@
                         <outlet property="checkImage" destination="OMl-CS-7Pz" id="f29-Rh-YB1"/>
                         <outlet property="feedImage" destination="NRd-42-THM" id="F3g-Lq-qgR"/>
                         <outlet property="helpImage" destination="D2v-I4-Pzp" id="N1f-j3-FE9"/>
+                        <outlet property="listDismissButton" destination="EgY-Vv-dDB" id="cVo-1j-UPt"/>
                         <outlet property="listImage" destination="2G1-7W-fQ9" id="vFa-c3-6zZ"/>
+                        <outlet property="menuImage" destination="0vq-qg-eBO" id="Ed1-1u-cXB"/>
                         <outlet property="messageImage" destination="QM9-ny-b8u" id="bdn-Rb-zvx"/>
                         <outlet property="navImage" destination="sdx-D8-5Xv" id="MQX-gA-mmA"/>
+                        <outlet property="rescheduleDismissButton" destination="LpF-2J-VR8" id="fQB-Pz-gf1"/>
                         <outlet property="rescheduleImage" destination="gPk-YV-ZfT" id="GnJ-s8-U1t"/>
                         <outlet property="scrollView" destination="D5G-D4-ZGv" id="jRe-1O-rWh"/>
                         <outlet property="searchImage" destination="DLA-kq-LV7" id="Jz9-7S-hyZ"/>
@@ -89,8 +110,9 @@
                         <action selector="onPanMessage:" destination="BYZ-38-t0r" id="EKH-mg-3lv"/>
                     </connections>
                 </panGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="o40-LJ-uKm"/>
             </objects>
-            <point key="canvasLocation" x="335" y="488"/>
+            <point key="canvasLocation" x="331" y="514"/>
         </scene>
     </scenes>
     <resources>
@@ -99,6 +121,7 @@
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
         <image name="list" width="320" height="568"/>
+        <image name="menu" width="320" height="568"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
         <image name="reschedule" width="320" height="568"/>
