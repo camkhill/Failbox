@@ -262,6 +262,7 @@ class MailboxViewController: UIViewController {
     func onEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
         
         let translation = sender.translationInView(view)
+        let velocity = sender.velocityInView(view)
         
         if sender.state == UIGestureRecognizerState.Began{
             menuOriginalCenter = menuImage.center
@@ -271,7 +272,7 @@ class MailboxViewController: UIViewController {
             
         } else if sender.state == UIGestureRecognizerState.Ended{
             
-            if translation.x > 160 {
+            if velocity.x > 0 {
                 sender.enabled = false
                 UIView.animateWithDuration(0.5, animations: { 
                     self.menuImage.center.x = self.menuOriginalCenter.x + CGFloat(320)
@@ -283,7 +284,7 @@ class MailboxViewController: UIViewController {
                         //enable pangesturerecognizer on the menu
                 })
                 
-            } else if translation.x <= 160 {
+            } else if velocity.x <= 0 {
                 UIView.animateWithDuration(0.5, animations: {
                     self.menuImage.center.x = self.menuOriginalCenter.x
                     
@@ -297,6 +298,7 @@ class MailboxViewController: UIViewController {
         //set up motion control
         
         let translation = sender.translationInView(view)
+        let velocity = sender.velocityInView(view)
         
         if sender.state == UIGestureRecognizerState.Began{
             menuOriginalCenter = menuImage.center
@@ -310,7 +312,7 @@ class MailboxViewController: UIViewController {
             
             
         } else if sender.state == UIGestureRecognizerState.Ended{
-            if translation.x < -160 {
+            if velocity.x < 0 {
                 UIView.animateWithDuration(0.3, animations: {
                     self.menuImage.center.x = self.menuOriginalCenter.x - 320
                     }, completion: { (Bool) in
@@ -319,7 +321,7 @@ class MailboxViewController: UIViewController {
                 })
                 
                 
-            } else if translation.x >= -160 {
+            } else if velocity.x >= 0 {
                 UIView.animateWithDuration(0.3, animations: {
                     self.menuImage.center.x = self.menuOriginalCenter.x
                     }, completion: { (Bool) in
