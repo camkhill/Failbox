@@ -336,4 +336,11 @@ class MailboxViewController: UIViewController {
         
     }
     
+    
+    @IBAction func onSelectorChanged(sender: UISegmentedControl) {
+        
+        
+    }
+    
+    
 }
