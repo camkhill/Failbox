@@ -34,7 +34,16 @@ class MailboxViewController: UIViewController {
     var feedOriginalCenter: CGPoint!
     var menuOriginalCenter: CGPoint!
     var edgeGesture: UIScreenEdgePanGestureRecognizer!
-    //let edgeGest = UIScreenEdgePanGestureRecognizer!(target: self(), action: "onEdgePan")
+
+    //This var will be used to track what the most recent action was:
+    // 0: no action taken yet
+    // 1: deleted
+    // 2: archived
+    // 3: alarm set
+    // 4: list
+    var lastAction = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,6 +164,7 @@ class MailboxViewController: UIViewController {
             
             if transform.x > 260 {
                 //fly off right and delete
+                lastAction = 1
                 UIView.animateWithDuration(0.4, animations: {
                     self.archiveImage.alpha = 0
                     self.messageImage.center = CGPoint(x: self.messageOriginalCenter.x + 370, y: self.messageOriginalCenter.y)
@@ -166,6 +176,7 @@ class MailboxViewController: UIViewController {
 
             } else if 60 < transform.x && transform.x <= 260 {
                 //fly off right and archive?
+                lastAction = 2
                 UIView.animateWithDuration(0.4, animations: {
                     self.archiveImage.alpha = 0
                     self.messageImage.center = CGPoint(x: self.messageOriginalCenter.x + 370, y: self.messageOriginalCenter.y)
@@ -181,6 +192,7 @@ class MailboxViewController: UIViewController {
                 })
             } else if -260 < transform.x && transform.x <= -60 {
                 //fly off left and alarm
+                lastAction = 3
                 UIView.animateWithDuration(0.4, animations: {
                     self.checkImage.alpha = 0
                     self.messageImage.center = CGPoint(x: self.messageOriginalCenter.x - 370, y: self.messageOriginalCenter.y)
@@ -200,11 +212,13 @@ class MailboxViewController: UIViewController {
                 
             } else if transform.x <= -260 {
                 //fly off left and ??
+                lastAction = 4
                 UIView.animateWithDuration(0.4, animations: {
                     self.checkImage.alpha = 0
                     self.messageImage.center = CGPoint(x: self.messageOriginalCenter.x - 370, y: self.messageOriginalCenter.y)
                     }, completion: { (Bool) in
                         //Show list
+                        
                         UIView.animateWithDuration(0.2, animations: { 
                             self.listImage.alpha = 1
                             self.listDismissButton.enabled = true
@@ -342,5 +356,61 @@ class MailboxViewController: UIViewController {
         
     }
     
+    
+    //Shake gesture code
+    
+    
+    //Below is false by default, but needs to be true so view handles UIEvents
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        
+        messageOriginalCenter = messageImage.center
+        feedOriginalCenter = feedImage.center
+        
+        if lastAction == 0 {
+            //do nothing if no recent action
+        } else if lastAction == 1 {
+            lastAction = 0
+            let offset: CGFloat = 370
+            undoAnimation(offset)
+            
+        } else if lastAction == 2 {
+            lastAction = 0
+            let offset: CGFloat = 370
+            undoAnimation(offset)
+            
+        } else if lastAction == 3 {
+            lastAction = 0
+            let offset: CGFloat = -370
+            undoAnimation(offset)
+        } else if lastAction == 4 {
+            lastAction = 0
+            let offset: CGFloat = -370
+            undoAnimation(offset)
+        }
+    }
+    
+    //This function does the animation to undo last action
+    func undoAnimation(offset: CGFloat) {
+        
+        let height = messageImage.frame.size.height
+        //move feed up to start
+        feedImage.center = CGPoint(x: self.feedOriginalCenter.x, y: self.feedOriginalCenter.y - height)
+        self.messageImage.center = CGPoint(x: self.messageOriginalCenter.x + offset, y: self.messageOriginalCenter.y)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.feedImage.center = CGPoint(x: self.feedOriginalCenter.x, y: self.feedOriginalCenter.y)
+            
+        }) { (Bool) in
+            
+            UIView.animateWithDuration(0.3, animations: {
+                self.messageImage.center = self.messageOriginalCenter
+            })
+            
+        }
+    }
     
 }
