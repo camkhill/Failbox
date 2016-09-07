@@ -128,6 +128,7 @@ class MailboxViewController: UIViewController {
                 archiveImage.alpha = 1
             } else if 60 < transform.x && transform.x <= 260 {
                 self.topMessageView.backgroundColor = UIColor(red: 0.168, green: 0.908, blue: 0.399, alpha: 1)
+                archiveImage.image = UIImage(named: "archive_icon")
                 archiveImage.center = CGPoint(x: archiveOriginalCenter.x + transform.x - 60, y: archiveOriginalCenter.y)
                 checkImage.alpha = 0
                 archiveImage.alpha = 1
@@ -148,6 +149,7 @@ class MailboxViewController: UIViewController {
                 archiveImage.alpha = transform.x/60
             } else if -260 < transform.x && transform.x <= -60 {
                 self.topMessageView.backgroundColor = UIColor(red: 0.994, green: 0.945, blue: 0.432, alpha: 1)
+                checkImage.image = UIImage(named: "later_icon")
                 checkImage.center = CGPoint(x: checkOriginalCenter.x + transform.x + 60, y: checkOriginalCenter.y)
                 archiveImage.alpha = 0
                 checkImage.alpha = 1

@@ -56,21 +56,21 @@
                                         <rect key="frame" x="0.0" y="101" width="320" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="oxk-uC-Q4p">
+                                        <rect key="frame" x="62" y="25" width="195" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="" image="later_nav_icon"/>
+                                            <segment title="" image="mail_nav_icon"/>
+                                            <segment title="" image="archive_nav_icon"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.37647058823529411" green="0.72549019607843135" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="onSelectorChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="JhY-bt-Ed2"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                             </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="oxk-uC-Q4p">
-                                <rect key="frame" x="63" y="26" width="195" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="" image="later_nav_icon"/>
-                                    <segment title="" image="mail_nav_icon"/>
-                                    <segment title="" image="archive_nav_icon"/>
-                                </segments>
-                                <color key="tintColor" red="0.37647058823529411" green="0.72549019607843135" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="onSelectorChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="JhY-bt-Ed2"/>
-                                </connections>
-                            </segmentedControl>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" image="reschedule" id="gPk-YV-ZfT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask"/>
