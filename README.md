@@ -42,7 +42,7 @@ Time spent: `~10`
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. What is the best way to implement the segmented control? Is there an easier way than using a large scroll view?
-2. 
+2. How could we apply this swiping functionality to all messages, say if we duplicated the first one and made a grid of them? Is that when you would use a table view or table view controller?
 
 ### Video Walkthrough 
 
